@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -45,6 +46,11 @@ public class ProductController {
     public ResponseEntity<?> deleteProduct(@PathVariable("product_id") Long product_id) {
         productService.deleteProduct(product_id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/find/{product_id}")
+    public Optional<Product> findProductById(@PathVariable("product_id")Long product_id){
+        return productService.getProductById(product_id);
     }
 
 

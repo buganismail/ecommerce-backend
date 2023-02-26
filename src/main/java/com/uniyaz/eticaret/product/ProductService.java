@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -21,21 +22,20 @@ public class ProductService {
     }
 
     public List<Product> findAllProducts() {
-
         return productDao.findAll();
     }
 
     public Product updateProduct(Product product) {
-
         return productDao.save(product);
     }
 
-//    public Product findProductById(Long id) {
-//        return productRepo.findProductById(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found :( "));
-//    }
+
+
+    public Optional<Product> getProductById(Long id){
+        return productDao.findById(id);
+    }
 
     public void deleteProduct(Long product_id) {
-
         productDao.deleteById(product_id);
     }
 
