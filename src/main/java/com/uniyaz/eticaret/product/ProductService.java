@@ -29,14 +29,12 @@ public class ProductService {
         return productDao.save(product);
     }
 
-
-
-    public Optional<Product> getProductById(Long id){
-        return productDao.findById(id);
-    }
-
     public void deleteProduct(Long product_id) {
         productDao.deleteById(product_id);
+    }
+
+    public Optional<Product> getProductById(Long id) {
+        return productDao.findById(id);
     }
 
 

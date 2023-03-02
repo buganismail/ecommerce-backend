@@ -1,13 +1,12 @@
 package com.uniyaz.eticaret.comment;
 
-import com.uniyaz.eticaret.basket.Basket;
-import com.uniyaz.eticaret.basket.BasketService;
 import com.uniyaz.eticaret.product.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -41,6 +40,11 @@ public class CommentController {
     public ResponseEntity<?> deleteComment(@PathVariable("comment_id") Long comment_id) {
         commentService.deleteComment(comment_id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/find/{comment_id}")
+    public Optional<Comment> findProductById(@PathVariable("comment_id")Long comment_id){
+        return commentService.getProductById(comment_id);
     }
 
 }

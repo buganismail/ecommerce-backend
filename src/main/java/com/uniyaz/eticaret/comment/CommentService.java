@@ -1,13 +1,12 @@
 package com.uniyaz.eticaret.comment;
 
-import com.uniyaz.eticaret.basket.Basket;
-import com.uniyaz.eticaret.basket.BasketDao;
 import com.uniyaz.eticaret.product.Product;
 import com.uniyaz.eticaret.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -21,8 +20,8 @@ public class CommentService {
 
     public Comment addComment(Product product) {
         Comment comment = new Comment();
-        User user = new User();
 
+        User user = new User();
         user.setUser_id(1L);
 
         comment.setUser(user);
@@ -51,5 +50,9 @@ public class CommentService {
 
     public void deleteComment(Long comment_id) {
         commentDao.deleteById(comment_id);
+    }
+
+    public Optional<Comment> getProductById(Long id) {
+        return commentDao.findById(id);
     }
 }

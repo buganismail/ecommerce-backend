@@ -14,7 +14,7 @@ public class Comment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long commnet_id;
+    private Long comment_id;
 
     @JoinColumn(name = "product_id")
     @ManyToOne
@@ -30,15 +30,16 @@ public class Comment implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.REFRESH)
     private User user;
 
-    private Long prarent_id;
-    private Long child_id;
-    
-    public Long getCommnet_id() {
-        return commnet_id;
+    private Long parent_id;
+    private String text;
+
+
+    public Long getComment_id() {
+        return comment_id;
     }
 
-    public void setCommnet_id(Long commnet_id) {
-        this.commnet_id = commnet_id;
+    public void setComment_id(Long comment_id) {
+        this.comment_id = comment_id;
     }
 
     public Product getProduct() {
@@ -57,30 +58,30 @@ public class Comment implements Serializable {
         this.user = user;
     }
 
-    public Long getPrarent_id() {
-        return prarent_id;
+    public Long getParent_id() {
+        return parent_id;
     }
 
-    public void setPrarent_id(Long prarent_id) {
-        this.prarent_id = prarent_id;
+    public void setParent_id(Long parent_id) {
+        this.parent_id = parent_id;
     }
 
-    public Long getChild_id() {
-        return child_id;
+    public String getText() {
+        return text;
     }
 
-    public void setChild_id(Long child_id) {
-        this.child_id = child_id;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
     public String toString() {
         return "Comment{" +
-                "commnet_id=" + commnet_id +
+                "comment_id=" + comment_id +
                 ", product=" + product +
                 ", user=" + user +
-                ", prarent_id=" + prarent_id +
-                ", child_id=" + child_id +
+                ", parent_id=" + parent_id +
+                ", text='" + text + '\'' +
                 '}';
     }
 }
